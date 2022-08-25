@@ -3,7 +3,7 @@ import React from 'react';
 
 const PizzaBlock = (props) => {
   const [pizzaCount, setPizzaCount] = useState(0);
-  let onClickHandler = () => {
+  const onClickAddBtn = () => {
     setPizzaCount(pizzaCount + 1);
   };
   return (
@@ -27,7 +27,7 @@ const PizzaBlock = (props) => {
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">{props.price} ₼</div>
-        <button onClick={onClickHandler} className="button button--outline button--add">
+        <button onClick={onClickAddBtn} className="button button--outline button--add">
           <svg
             width="12"
             height="12"
