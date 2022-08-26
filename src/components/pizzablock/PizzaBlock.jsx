@@ -3,26 +3,36 @@ import React from 'react';
 
 const PizzaBlock = (props) => {
   const [pizzaCount, setPizzaCount] = useState(0);
+  const [active, setActive] = useState(0);
   const onClickAddBtn = () => {
     setPizzaCount(pizzaCount + 1);
   };
+  const pizzaTypes = ['Nazik', 'Ənənəvi'];
   return (
     <div className="pizza-block">
-      <img
-        className="pizza-block__image"
-        src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-        alt="Pizza"
-      />
+      <img className="pizza-block__image" src={props.image} alt="Pizza" />
       <h4 className="pizza-block__title">{props.title}</h4>
       <div className="pizza-block__selector">
         <ul>
-          <li className="active">nazik</li>
-          <li>ənənəvi</li>
+          {props.types.map((type) => (
+            <li
+              key={type}
+              onClick={() => setActive(type)}
+              className={active === type ? 'active' : ''}
+            >
+              {pizzaTypes[type]}
+            </li>
+          ))}
+          {/* <li className="active">nazik</li>
+          <li>ənənəvi</li> */}
         </ul>
         <ul>
-          <li className="active">26 cm.</li>
-          <li>30 cm.</li>
-          <li>40 cm.</li>
+          {props.sizes.map((size, i) => (
+            <li key={size} onClick={() => setActive(i)} className={active === i ? 'active' : ''}>
+              {size} cm
+            </li>
+          ))}
+          {/* <li className="active">26 cm.</li> */}
         </ul>
       </div>
       <div className="pizza-block__bottom">
